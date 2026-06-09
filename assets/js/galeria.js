@@ -147,11 +147,34 @@ function renderLightbox(index) {
 }
 
 // Open on img-wrap or button click
+// Track touch movement to distinguish tap vs scroll on mobile
+let touchDeltaY = 0;
+
 items.forEach(item => {
   const wrap = item.querySelector('.galeria-img-wrap');
   const btn  = item.querySelector('.galeria-open-btn');
-  wrap.addEventListener('click', () => openLightbox(item));
-  btn.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(item); });
+
+  let touchStartY = 0;
+
+  wrap.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchDeltaY = 0;
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', (e) => {
+    touchDeltaY = Math.abs(e.touches[0].clientY - touchStartY);
+  }, { passive: true });
+
+  wrap.addEventListener('click', () => {
+    if (touchDeltaY > 10) return;
+    openLightbox(item);
+  });
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (touchDeltaY > 10) return;
+    openLightbox(item);
+  });
 });
 
 lightboxClose.addEventListener('click', closeLightbox);
@@ -165,6 +188,19 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft')  renderLightbox(currentIndex - 1);
   if (e.key === 'ArrowRight') renderLightbox(currentIndex + 1);
 });
+
+// Swipe táctil en el lightbox
+let lbTouchStartX = 0;
+lightbox.addEventListener('touchstart', (e) => {
+  lbTouchStartX = e.touches[0].clientX;
+}, { passive: true });
+lightbox.addEventListener('touchend', (e) => {
+  const delta = e.changedTouches[0].clientX - lbTouchStartX;
+  if (Math.abs(delta) > 50) {
+    if (delta < 0) renderLightbox(currentIndex + 1);
+    else           renderLightbox(currentIndex - 1);
+  }
+}, { passive: true });
 
 buildVisibleIndex();
 forceLoadImages('.galeria-item:not(.hidden) img');
