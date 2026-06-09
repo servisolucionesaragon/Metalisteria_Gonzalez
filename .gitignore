@@ -1,0 +1,19 @@
+# Claude Code internal files
+.claude/
+
+# Archivos de prueba y temporales
+aaa.html
+Nuevo Documento de texto.txt
+
+# Editor
+*.code-workspace
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log

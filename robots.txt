@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://metalisteriagonzalez.com/sitemap.xml
