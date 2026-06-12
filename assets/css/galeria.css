@@ -255,6 +255,7 @@
 .badge-pergolas    { background: rgba(60,160,80,0.12);   color: #2E9650; }
 .badge-escalas     { background: rgba(60,130,200,0.12);  color: #3A82C8; }
 .badge-puertas     { background: rgba(180,100,60,0.12);  color: #B46440; }
+.badge-mas         { background: rgba(120,80,200,0.12);  color: #7850C8; }
 
 .galeria-info h3 {
   font-family: var(--font-heading);
