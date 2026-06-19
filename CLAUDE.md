@@ -26,6 +26,7 @@ Landing page para empresa del sector metalmecánico con más de 20 años de expe
 - n8n Chat widget — MetalBot ("Asesor en línea 24/7")
   - Webhook: https://n8n.ssaragon.com/webhook/3fe19a68-4749-4efb-8916-f8263ff166ef/chat
   - Burbuja dorada via CSS vars
+  - Modelo IA: **Groq `llama-3.3-70b-versatile`** (flujo n8n: chatTrigger → AI Agent v2.2 → Groq + memoria). Reemplazó a Gemini (free tier inservible). Backup del flujo: `n8n-workflow-groq.json` (gitignored)
 
 ## Paleta de colores
 ```
@@ -46,7 +47,8 @@ Web/
 ├── robots.txt
 ├── sitemap.xml
 ├── README.md
-├── .gitignore              ← Excluye .claude/, aaa.html
+├── wrangler.jsonc          ← Config despliegue Cloudflare Workers
+├── .gitignore              ← Excluye .claude/, workflows n8n, wrangler
 └── assets/
     ├── css/
     │   ├── style.css       ← Estilos principales
@@ -98,6 +100,11 @@ Navbar → Hero → Ticker → Nosotros → Valores → Propuesta de Valor → S
 - `aria-current="page"` en nav activo de galeria.html
 - Partículas del hero limitadas a `MAX_PARTICLES=20`
 
+## Despliegue
+- **Cloudflare Workers** (assets estáticos) vía `wrangler.jsonc` (`assets.directory: "."`, desde 2026-06-09)
+- Deploy: `npx wrangler deploy` (requiere login en Cloudflare)
+- ⚠️ `name: "metalisteragonzlez"` tiene typo — revisar si afecta la URL del worker
+
 ## GitHub
 - Repositorio: https://github.com/servisolucionesaragon/Metalisteria_Gonzalez
 - Rama principal: `main`
@@ -105,7 +112,7 @@ Navbar → Hero → Ticker → Nosotros → Valores → Propuesta de Valor → S
 
 ## Notas de desarrollo
 - `aaa.html` es archivo de prueba temporal — ignorar siempre
-- Los nombres de los 23 ítems de la categoría "Más" son genéricos; actualizar cuando se conozca el contenido real de cada foto
+- Títulos y ubicaciones de la galería = proyectos reales (actualizado 2026-06-18). Estilo: conectores en minúscula (con, de, en, para), resto en Title Case
 - Al trabajar desde un PC nuevo: `git pull origin main` para sincronizar antes de editar
 
 ## Diseñador
