@@ -110,10 +110,20 @@ Navbar → Hero → Ticker → Nosotros → Valores → Propuesta de Valor → S
 - Rama principal: `main`
 - Auth: token PAT de servisolucionesaragon
 
+## Entorno de trabajo (NAS + multi-OS)
+
+- El proyecto reside en un **NAS (NAS-YORBIS)** accesible desde múltiples equipos vía red local
+- Se trabaja desde **Windows** (ruta UNC `\\NAS-YORBIS\...`) y **Mac** (montaje SMB)
+- **Todas las rutas en el código son RELATIVAS** — el proyecto funciona desde cualquier ubicación sin cambios
+- El `.code-workspace` usa `"path": "."` (relativo)
+- **Sensibilidad a mayúsculas en Mac:** la carpeta `galeria/Mas/` usa M mayúscula — respetar nombre exacto en HTML
+- Al trabajar desde un equipo nuevo: `git pull origin main` antes de editar
+
 ## Notas de desarrollo
 - `aaa.html` es archivo de prueba temporal — ignorar siempre
 - Títulos y ubicaciones de la galería = proyectos reales (actualizado 2026-06-18). Estilo: conectores en minúscula (con, de, en, para), resto en Title Case
-- Al trabajar desde un PC nuevo: `git pull origin main` para sincronizar antes de editar
+- `robots.txt` bloquea `/construccion.html` (Disallow)
+- `sitemap.xml` incluye solo páginas reales indexables: `/` y `/galeria.html` (los anchors `#section` no se indexan como páginas separadas)
 
 ## Diseñador
 Yorbis Aragón — yorbisaragon.com — Servisoluciones Aragón

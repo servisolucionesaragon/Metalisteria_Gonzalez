@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /construccion.html
 
 Sitemap: https://metalisteriagonzalez.com/sitemap.xml

@@ -31,9 +31,10 @@ Sitio web landing page para **Metalistería González S.A.S**, empresa del secto
 Web/
 ├── index.html              # Página principal
 ├── galeria.html            # Galería de proyectos
-├── construccion.html       # Página "en construcción"
+├── construccion.html       # Página "en construcción" (no indexada)
+├── CLAUDE.md               # Contexto para Claude Code (IA asistente)
 ├── robots.txt              # Directivas para crawlers
-├── sitemap.xml             # Mapa del sitio
+├── sitemap.xml             # Mapa del sitio (solo páginas indexables)
 └── assets/
     ├── css/
     │   ├── style.css       # Estilos principales
@@ -50,7 +51,8 @@ Web/
             ├── estructuras/   # 01.jpg – 10.jpg
             ├── pergolas/      # 01.jpg – 10.jpg
             ├── escalas/       # 01.jpg – 10.jpg
-            └── puertas/       # 01.jpg – 10.jpg
+            ├── puertas/       # 01.jpg – 10.jpg
+            └── Mas/           # 01.jpg – 23.jpg  (M mayúscula)
 ```
 
 ---
@@ -70,9 +72,10 @@ Web/
 10. **Footer** — Contacto, redes sociales, mapa de navegación
 
 ### `galeria.html`
-- Filtros por categoría: Todos | Estructuras Metálicas | Pérgolas | Escalas | Puertas
+- Filtros por categoría: Todos | Estructuras Metálicas | Pérgolas | Escalas | Puertas | Más
+- 63 proyectos fotográficos en total
 - Grid responsivo: 4 col (desktop) → 3 col (laptop) → 2 col (tablet) → 1 col (móvil)
-- Lightbox con navegación por teclado (← → Esc)
+- Lightbox con navegación por teclado (← → Esc) y swipe táctil
 
 ---
 
@@ -83,7 +86,8 @@ Web/
 - ✅ Schema.org: `LocalBusiness`, `WebSite`, `ItemList`, `BreadcrumbList`
 - ✅ Canonical URLs
 - ✅ `meta robots: index, follow`
-- ✅ `sitemap.xml` + `robots.txt`
+- ✅ `sitemap.xml` — solo páginas reales (`/` y `/galeria.html`)
+- ✅ `robots.txt` — bloquea `/construccion.html`
 - ✅ `lang="es-CO"`
 - ✅ Favicon completo (SVG, PNG, ICO, Apple Touch, WebManifest)
 
@@ -99,6 +103,18 @@ Web/
 
 ---
 
+## Entorno de desarrollo
+
+El proyecto reside en un **NAS** (NAS-YORBIS) accesible desde múltiples equipos con Windows y Mac vía red local.
+
+- **Todas las rutas en el código son relativas** — el proyecto se puede abrir desde cualquier ubicación sin cambios
+- El archivo `.code-workspace` usa ruta relativa (`"path": "."`)
+- **Nota para Mac:** el sistema de archivos es sensible a mayúsculas. La carpeta `galeria/Mas/` tiene M mayúscula — respetar el nombre exacto en el HTML
+
+Para trabajar con asistencia de IA (Claude Code), ver `CLAUDE.md` en la raíz del proyecto.
+
+---
+
 ## Datos de contacto del cliente
 
 | Campo | Valor |
@@ -107,6 +123,7 @@ Web/
 | Dirección | Calle 58A # 54 – 24, Medellín |
 | Teléfono | 604 490 1559 |
 | WhatsApp | [+57 323 380 9348](https://wa.me/573233809348) |
+| Tel 2 | +57 312 286 4980 |
 | Email | metalisteria.gonzalez@gmail.com |
 | Instagram | [@metalisteria.gonzalez](https://www.instagram.com/metalisteria.gonzalez) |
 
@@ -114,7 +131,7 @@ Web/
 
 ## Desarrollo
 
-Diseño y desarrollo por **Yorbis Aragón** — [Servisoluciones Aragón](https://yorbisaragon.com)
+Diseño y desarrollo por **Yorbis Aragón** — [Servisoluciones Aragón](https://ssaragon.com)
 
 ---
 
